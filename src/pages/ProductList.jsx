@@ -8,12 +8,9 @@ export default function ProductList() {
 
   useEffect(() => {
     let productService = new ProductService();
-    productService
-      .getProducts()
-      .then((result) => {
-        setProducts(result.data.data);
-      })
-      .catch((err) => {});
+    productService.getProducts().then((result) => {
+      setProducts(result.data.data);
+    }, []);
   });
 
   return (

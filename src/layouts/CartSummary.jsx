@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "semantic-ui-react";
-import CartDetail from "../pages/CartDetail";
 
 export default function CartSummary() {
   return (
