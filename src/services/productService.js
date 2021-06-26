@@ -2,10 +2,13 @@ import axios from "axios";
 
 export default class ProductService {
   getProducts() {
-    return axios.get("http://localhost:8080/api/jobTitles/getAll");
+    return axios.get("http://localhost:8080/api/products/getall");
   }
 
-  getById(id) {
-    return axios.get("http://localhost:8080/api/jobTitles/getById?id=" + id);
+  getByProductName(productName) {
+    return axios.get(
+      "http://localhost:8080/api/products/getByProductName?productName=" +
+        productName
+    );
   }
 }

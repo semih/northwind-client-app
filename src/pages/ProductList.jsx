@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Table, Menu, Icon } from "semantic-ui-react";
+import { Table, Menu, Icon, Button } from "semantic-ui-react";
 import ProductService from "../services/productService";
 import { Link } from "react-router-dom";
 
@@ -18,17 +18,28 @@ export default function ProductList() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Id</Table.HeaderCell>
-            <Table.HeaderCell>Title</Table.HeaderCell>
+            <Table.HeaderCell>Ürün Adı</Table.HeaderCell>
+            <Table.HeaderCell>Birim Fiyatı</Table.HeaderCell>
+            <Table.HeaderCell>Stok Adedi</Table.HeaderCell>
+            <Table.HeaderCell>Açıklama</Table.HeaderCell>
+            <Table.HeaderCell>Kategori</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
           {products.map((product) => (
             <Table.Row key={product.id}>
-              <Table.Cell>{product.id}</Table.Cell>
               <Table.Cell>
-                <Link to={`/products/${product.id}`}>{product.title}</Link>
+                <Link to={`/products/${product.productName}`}>
+                  {product.productName}
+                </Link>
+              </Table.Cell>
+              <Table.Cell>{product.unitPrice}</Table.Cell>
+              <Table.Cell>{product.unitsInStock}</Table.Cell>
+              <Table.Cell>{product.quantityPerUnit}</Table.Cell>
+              <Table.Cell>{product.category.categoryName}</Table.Cell>
+              <Table.Cell>
+                <Button>Sepete ekle</Button>
               </Table.Cell>
             </Table.Row>
           ))}
