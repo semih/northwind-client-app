@@ -2,8 +2,12 @@ import { React, useState, useEffect } from "react";
 import { Table, Menu, Icon, Button } from "semantic-ui-react";
 import ProductService from "../services/productService";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/actions/cartActions";
 
 export default function ProductList() {
+  //dispatch action çağırmak için bir fonksiyon. Bir fonksiyon çağrılmak isteniyor.
+  const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,6 +16,12 @@ export default function ProductList() {
       setProducts(result.data.data);
     }, []);
   });
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
+  function handleAddToCartAlternative(product) {}
 
   return (
     <div>
@@ -39,7 +49,9 @@ export default function ProductList() {
               <Table.Cell>{product.quantityPerUnit}</Table.Cell>
               <Table.Cell>{product.category.categoryName}</Table.Cell>
               <Table.Cell>
-                <Button>Sepete ekle</Button>
+                <Button onClick={() => handleAddToCart(product)}>
+                  Sepete ekle
+                </Button>
               </Table.Cell>
             </Table.Row>
           ))}
