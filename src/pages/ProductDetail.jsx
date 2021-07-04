@@ -10,6 +10,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     let productService = new ProductService();
+
     productService.getByProductName(name).then((result) => {
       setProduct(result.data.data);
     }, []);

@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 export default function Navi() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+
   const history = useHistory();
   function handleSignedOut() {
     setIsAuthenticated(false);
