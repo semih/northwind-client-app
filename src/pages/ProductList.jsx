@@ -4,6 +4,7 @@ import ProductService from "../services/productService";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/actions/cartActions";
+import { toast } from "react-toastify";
 
 export default function ProductList() {
   //dispatch action çağırmak için bir fonksiyon. Bir fonksiyon çağrılmak isteniyor.
@@ -19,6 +20,7 @@ export default function ProductList() {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
+    toast.success(`${product.productName} sepete eklendi!`);
   };
 
   function handleAddToCartAlternative(product) {}
