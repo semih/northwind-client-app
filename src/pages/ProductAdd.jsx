@@ -1,8 +1,8 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import React from "react";
 import * as Yup from "yup";
 //yup is used for validation
-import { FormField, Button } from "semantic-ui-react";
+import { FormField, Button, Label } from "semantic-ui-react";
 
 export default function ProductAdd() {
   const initialValues = { productName: "", unitPrice: 10 };
@@ -23,12 +23,26 @@ export default function ProductAdd() {
       >
         <Form className="ui form">
           <FormField>
-            <Field name="productName" placeholder="Ürün Adı"></Field>
+            <Field name="productName" placeholder="Ürün adı"></Field>
+            <ErrorMessage
+              name="productName"
+              render={(error) => (
+                <Label pointing basic color="red" content={error}></Label>
+              )}
+            ></ErrorMessage>
           </FormField>
           <FormField>
-            <Field name="unitPrice" placeholder="Ürün Fiyatı"></Field>
+            <Field name="unitPrice" placeholder="Ürün fiyatı"></Field>
+            <ErrorMessage
+              name="unitPrice"
+              render={(error) => (
+                <Label pointing basic color="red" content={error}></Label>
+              )}
+            ></ErrorMessage>
           </FormField>
-          <Button color="green" type="submit"></Button>
+          <Button color="green" type="submit">
+            Ekle
+          </Button>
         </Form>
       </Formik>
     </div>
