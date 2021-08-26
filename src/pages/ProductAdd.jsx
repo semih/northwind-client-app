@@ -3,6 +3,7 @@ import React from "react";
 import * as Yup from "yup";
 //yup is used for validation
 import { FormField, Button, Label } from "semantic-ui-react";
+import CustomTextInput from "../utilities/customFormControls/CustomTextInput";
 
 export default function ProductAdd() {
   const initialValues = { productName: "", unitPrice: 10 };
@@ -22,24 +23,8 @@ export default function ProductAdd() {
         }}
       >
         <Form className="ui form">
-          <FormField>
-            <Field name="productName" placeholder="Ürün adı"></Field>
-            <ErrorMessage
-              name="productName"
-              render={(error) => (
-                <Label pointing basic color="red" content={error}></Label>
-              )}
-            ></ErrorMessage>
-          </FormField>
-          <FormField>
-            <Field name="unitPrice" placeholder="Ürün fiyatı"></Field>
-            <ErrorMessage
-              name="unitPrice"
-              render={(error) => (
-                <Label pointing basic color="red" content={error}></Label>
-              )}
-            ></ErrorMessage>
-          </FormField>
+          <CustomTextInput name="productName" placeholder="Ürün adı" />
+          <CustomTextInput name="unitPrice" placeholder="Ürün fiyatı" />
           <Button color="green" type="submit">
             Ekle
           </Button>
